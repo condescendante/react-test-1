@@ -101,10 +101,10 @@ const InitValue = () => {
 
     // Try to PUT to database
     await axios
-      .put('http://127.0.0.1:5000/radar/1', {
+      .put('http://192.168.4.39:5000/radar/1', {
         radarid: 1,
-        startaziangleip: leftlimit,
-        endaziangleip: rightlimit,
+        left_limitip: leftlimit,
+        right_limitip: rightlimit,
         eleangleip: eleangle,
         scan_rateip: scanrate,
       })
@@ -112,7 +112,7 @@ const InitValue = () => {
         toast({
           title: 'Information Sent Successfully To Database',
           status: 'success',
-          duration: 5000,
+          duration: 500,
           isClosable: true,
           position: 'bottom',
         });
@@ -124,7 +124,7 @@ const InitValue = () => {
           title: 'Error Occurred!',
           description: error.response.data.message,
           status: 'error',
-          duration: 5000,
+          duration: 500,
           isClosable: true,
           position: 'bottom',
         });
@@ -140,12 +140,12 @@ const InitValue = () => {
       };
 
       const { data } = axios.post(
-        'http://127.0.0.1:5000/publishparameter',
+        'http://192.168.4.39:5000/publishparameter',
         {
           topic: 'IP',
           msg: JSON.stringify({
-            startaziangleip: leftlimit,
-            endaziangleip: rightlimit,
+            left_limitip: leftlimit,
+            right_limitip: rightlimit,
             eleangleip: eleangle,
             scan_rateip: scanrate,
           }),
@@ -155,7 +155,7 @@ const InitValue = () => {
       toast({
         title: 'Information Sent Successfully To Gimbal',
         status: 'success',
-        duration: 5000,
+        duration: 500,
         isClosable: true,
         position: 'bottom',
       });
@@ -166,7 +166,7 @@ const InitValue = () => {
         title: 'Error Occurred!',
         description: error.response.data.message,
         status: 'error',
-        duration: 5000,
+        duration: 500,
         isClosable: true,
         position: 'bottom',
       });
