@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 
-const UserInputs = ({ scanrate, leftlimit, rightlimit, eleangle }) => {
+const PastUserInputs = ({ scanrate, leftlimit, rightlimit, eleangle }) => {
   return (
     <Box
       d="flex"
@@ -60,4 +60,4 @@ const UserInputs = ({ scanrate, leftlimit, rightlimit, eleangle }) => {
   );
 };
 
-export default UserInputs;
+export default PastUserInputs;

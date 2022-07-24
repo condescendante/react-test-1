@@ -59,47 +59,7 @@ const InitValue = () => {
       return;
     }
 
-    // Try to post to database
-    // try {
-    //   const config = {
-    //     headers: {
-    //       'Content-type': 'application/json',
-    //     },
-    //   };
-
-    //   const { data } = await axios.post(
-    //     'http://127.0.0.1:5000/radar/1',
-    //     {
-    //       radarid: 1,
-    //       startaziangleip: sangle,
-    //       endaziangleip: eangle,
-    //       eleangleip: eleangle,
-    //       scan_rateip: scanrate,
-    //     },
-    //     config
-    //   );
-    //   toast({
-    //     title: 'Information Sent Successfully',
-    //     status: 'success',
-    //     duration: 5000,
-    //     isClosable: true,
-    //     position: 'bottom',
-    //   });
-
-    //   setLoading(false);
-    // } catch (error) {
-    //   toast({
-    //     title: 'Error Occurred!',
-    //     description: error.response.data.message,
-    //     status: 'error',
-    //     duration: 5000,
-    //     isClosable: true,
-    //     position: 'bottom',
-    //   });
-    //   setLoading(false);
-    // }
-
-    // Try to PUT to database
+    // PUT Input Parameters (Database)
     await axios
       .put('http://192.168.4.39:5000/radar/1', {
         radarid: 1,
@@ -131,7 +91,7 @@ const InitValue = () => {
         console.log(error);
       });
 
-    //Try to POST to ESP32
+    // POST Input Parameters (ESP32)
     try {
       const config = {
         headers: {
@@ -139,7 +99,7 @@ const InitValue = () => {
         },
       };
 
-      const { data } = axios.post(
+      axios.post(
         'http://192.168.4.39:5000/publishparameter',
         {
           topic: 'IP',
@@ -148,6 +108,7 @@ const InitValue = () => {
             right_limitip: rightlimit,
             eleangleip: eleangle,
             scan_rateip: scanrate,
+            triggerip: 1,
           }),
         },
         config
