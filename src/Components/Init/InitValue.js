@@ -60,78 +60,78 @@ const InitValue = () => {
     }
 
     // POST Input Parameters (Database)
-    try {
-      const config = {
-        headers: {
-          'Content-type': 'application/json',
-        },
-      };
+    // try {
+    //   const config = {
+    //     headers: {
+    //       'Content-type': 'application/json',
+    //     },
+    //   };
 
-      axios.post(
-        'http://192.168.4.39:5000/radar/1',
-        {
-          topic: 'IP',
-          msg: JSON.stringify({
-            radarid: 1,
-            left_limitip: leftlimit,
-            right_limitip: rightlimit,
-            eleangleip: eleangle,
-            scan_rateip: scanrate,
-          }),
-        },
-        config
-      );
-      toast({
-        title: 'Information Sent Successfully To Database',
-        status: 'success',
-        duration: 500,
-        isClosable: true,
-        position: 'bottom',
-      });
+    //   axios.post(
+    //     'http://192.168.4.39:5000/radar/1',
+    //     {
+    //       topic: 'IP',
+    //       msg: JSON.stringify({
+    //         radarid: 1,
+    //         left_limitip: leftlimit,
+    //         right_limitip: rightlimit,
+    //         eleangleip: eleangle,
+    //         scan_rateip: scanrate,
+    //       }),
+    //     },
+    //     config
+    //   );
+    //   toast({
+    //     title: 'Information Sent Successfully To Database',
+    //     status: 'success',
+    //     duration: 500,
+    //     isClosable: true,
+    //     position: 'bottom',
+    //   });
 
-      submitNav();
-    } catch (error) {
-      toast({
-        title: 'Error Occurred!',
-        description: error.response.data.message,
-        status: 'error',
-        duration: 500,
-        isClosable: true,
-        position: 'bottom',
-      });
-    }
+    //   submitNav();
+    // } catch (error) {
+    //   toast({
+    //     title: 'Error Occurred!',
+    //     description: error.response.data.message,
+    //     status: 'error',
+    //     duration: 500,
+    //     isClosable: true,
+    //     position: 'bottom',
+    //   });
+    // }
 
     // PUT Input Parameters (Database)
-    // await axios
-    //   .put('http://192.168.4.39:5000/radar/1', {
-    //     radarid: 1,
-    //     left_limitip: leftlimit,
-    //     right_limitip: rightlimit,
-    //     eleangleip: eleangle,
-    //     scan_rateip: scanrate,
-    //   })
-    //   .then(response => {
-    //     toast({
-    //       title: 'Information Sent Successfully To Database',
-    //       status: 'success',
-    //       duration: 500,
-    //       isClosable: true,
-    //       position: 'bottom',
-    //     });
-    //     setPost(response.data);
-    //     submitNav();
-    //   })
-    //   .catch(error => {
-    //     toast({
-    //       title: 'Error Occurred!',
-    //       description: error.response.data.message,
-    //       status: 'error',
-    //       duration: 500,
-    //       isClosable: true,
-    //       position: 'bottom',
-    //     });
-    //     console.log(error);
-    //   });
+    await axios
+      .post('http://192.168.4.39:5000/radar/1', {
+        radarid: 1,
+        left_limitip: leftlimit,
+        right_limitip: rightlimit,
+        eleangleip: eleangle,
+        scan_rateip: scanrate,
+      })
+      .then(response => {
+        toast({
+          title: 'Information Sent Successfully To Database',
+          status: 'success',
+          duration: 500,
+          isClosable: true,
+          position: 'bottom',
+        });
+        setPost(response.data);
+        submitNav();
+      })
+      .catch(error => {
+        toast({
+          title: 'Error Occurred!',
+          description: error.response.data.message,
+          status: 'error',
+          duration: 500,
+          isClosable: true,
+          position: 'bottom',
+        });
+        console.log(error);
+      });
 
     // POST Input Parameters (ESP32)
     try {
