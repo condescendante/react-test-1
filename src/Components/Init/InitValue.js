@@ -72,11 +72,11 @@ const InitValue = () => {
         {
           topic: 'IP',
           msg: JSON.stringify({
+            radarid: 1,
             left_limitip: leftlimit,
             right_limitip: rightlimit,
             eleangleip: eleangle,
             scan_rateip: scanrate,
-            triggerip: 1,
           }),
         },
         config
