@@ -59,48 +59,6 @@ const InitValue = () => {
       return;
     }
 
-    // POST Input Parameters (Database)
-    // try {
-    //   const config = {
-    //     headers: {
-    //       'Content-type': 'application/json',
-    //     },
-    //   };
-
-    //   axios.post(
-    //     'http://192.168.4.39:5000/radar/1',
-    //     {
-    //       topic: 'IP',
-    //       msg: JSON.stringify({
-    //         radarid: 1,
-    //         left_limitip: leftlimit,
-    //         right_limitip: rightlimit,
-    //         eleangleip: eleangle,
-    //         scan_rateip: scanrate,
-    //       }),
-    //     },
-    //     config
-    //   );
-    //   toast({
-    //     title: 'Information Sent Successfully To Database',
-    //     status: 'success',
-    //     duration: 500,
-    //     isClosable: true,
-    //     position: 'bottom',
-    //   });
-
-    //   submitNav();
-    // } catch (error) {
-    //   toast({
-    //     title: 'Error Occurred!',
-    //     description: error.response.data.message,
-    //     status: 'error',
-    //     duration: 500,
-    //     isClosable: true,
-    //     position: 'bottom',
-    //   });
-    // }
-
     // PUT Input Parameters (Database)
     await axios
       .post('http://192.168.4.39:5000/radar/1', {
@@ -189,6 +147,8 @@ const InitValue = () => {
           numStep={0.1}
           sliderMark1={0}
           sliderMark2={120}
+          min={0}
+          max={120}
         />
 
         <NumInput
@@ -199,7 +159,9 @@ const InitValue = () => {
           numPrecision={2}
           numStep={0.01}
           sliderMark1={-60}
-          sliderMark2={60}
+          sliderMark2={0}
+          min={-60}
+          max={0}
         />
 
         <NumInput
@@ -209,8 +171,10 @@ const InitValue = () => {
           title="Right Limit (°)"
           numPrecision={2}
           numStep={0.01}
-          sliderMark1={-60}
+          sliderMark1={0}
           sliderMark2={60}
+          min={0}
+          max={60}
         />
 
         <NumInput
@@ -222,6 +186,8 @@ const InitValue = () => {
           numStep={0.01}
           sliderMark1={-45}
           sliderMark2={45}
+          min={-45}
+          max={45}
         />
 
         <Button

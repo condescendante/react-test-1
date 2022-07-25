@@ -23,6 +23,8 @@ function NumInput({
   numStep,
   sliderMark1,
   sliderMark2,
+  max,
+  min,
 }) {
   return (
     <FormControl id={identity} display="flex" alignItems="center" py={5}>
@@ -55,6 +57,8 @@ function NumInput({
         step={numStep}
         clampValueOnBlur={false}
         keepWithinRange={false}
+        max={max}
+        min={min}
       >
         <SliderMark value={0} mt="1" ml="-2.5" fontSize="sm">
           {sliderMark1}
