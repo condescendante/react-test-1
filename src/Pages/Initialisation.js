@@ -22,7 +22,7 @@ const Initialisation = () => {
   // GET User Inputs with Polling
   useIntervalWhen(async () => {
     await axios
-      .get('http://192.168.4.39:5000/radars')
+      .get('http://192.168.4.39:5000/radar')
       .then(response => {
         const items = response.data.items;
         setGetData(items);

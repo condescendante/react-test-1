@@ -91,7 +91,7 @@ const Dashboard = () => {
       toast({
         title: 'Gimbal Stopped',
         status: 'success',
-        duration: 500,
+        duration: 1000,
         isClosable: true,
         position: 'bottom',
       });
@@ -102,7 +102,7 @@ const Dashboard = () => {
         title: 'Error Occurred!',
         description: error.response.data.message,
         status: 'error',
-        duration: 500,
+        duration: 1000,
         isClosable: true,
         position: 'bottom',
       });
@@ -130,9 +130,9 @@ const Dashboard = () => {
         config
       );
       toast({
-        title: 'Gimbal Stopped',
+        title: 'Gimbal Started',
         status: 'success',
-        duration: 500,
+        duration: 1000,
         isClosable: true,
         position: 'bottom',
       });
@@ -143,7 +143,7 @@ const Dashboard = () => {
         title: 'Error Occurred!',
         description: error.response.data.message,
         status: 'error',
-        duration: 500,
+        duration: 1000,
         isClosable: true,
         position: 'bottom',
       });
@@ -173,7 +173,7 @@ const Dashboard = () => {
       toast({
         title: 'Gimbal Stopped',
         status: 'success',
-        duration: 500,
+        duration: 1000,
         isClosable: true,
         position: 'bottom',
       });
@@ -187,7 +187,7 @@ const Dashboard = () => {
         title: 'Error Occurred!',
         description: error.response.data.message,
         status: 'error',
-        duration: 500,
+        duration: 1000,
         isClosable: true,
         position: 'bottom',
       });
@@ -259,7 +259,7 @@ const Dashboard = () => {
               }}
               ml={3}
             >
-              Stop Gimbal
+              Start Gimbal
             </Button>
           </HStack>
 
