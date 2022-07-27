@@ -18,16 +18,16 @@ import {
 
 const InitValue = () => {
   // Slider Data
-  const [scanrate, setScanRate] = useState(50);
+  const [scanrate, setScanRate] = useState(60.0);
   const handleChangeScanRate = scanrate => setScanRate(scanrate);
 
-  const [leftlimit, setLeftLimit] = useState(50);
+  const [leftlimit, setLeftLimit] = useState(-20);
   const handleChangeLeftLimit = leftlimit => setLeftLimit(leftlimit);
 
-  const [rightlimit, setRightLimit] = useState(50);
+  const [rightlimit, setRightLimit] = useState(20);
   const handleChangeRightLimit = rightlimit => setRightLimit(rightlimit);
 
-  const [eleangle, setEleAngle] = useState(50);
+  const [eleangle, setEleAngle] = useState(0);
   const handleChangeEleAngle = eleangle => setEleAngle(eleangle);
 
   // Modal Settings
@@ -46,7 +46,16 @@ const InitValue = () => {
 
   // Upon clicking submit, this function validates fields and posts to database
   const submitHandler = async () => {
-    if (!scanrate || !leftlimit || !rightlimit || !eleangle) {
+    if (
+      !(scanrate >= 0) ||
+      !(scanrate <= 120) ||
+      !(leftlimit >= -40) ||
+      !(leftlimit <= 0) ||
+      !(rightlimit >= 0) ||
+      !(rightlimit <= 40) ||
+      !(eleangle >= -45) ||
+      !(eleangle <= 45)
+    ) {
       setLoading(true);
       toast({
         title: 'Values not set!',
@@ -147,6 +156,8 @@ const InitValue = () => {
           numStep={0.1}
           sliderMark1={0}
           sliderMark2={120}
+          sliderLeft={0}
+          sliderRight={120}
           min={0}
           max={120}
         />
@@ -158,9 +169,11 @@ const InitValue = () => {
           title="Left Limit (°)"
           numPrecision={2}
           numStep={0.01}
-          sliderMark1={-60}
+          sliderMark1={-40}
           sliderMark2={0}
-          min={-60}
+          sliderLeft={-40}
+          sliderRight={0}
+          min={-40}
           max={0}
         />
 
@@ -172,9 +185,11 @@ const InitValue = () => {
           numPrecision={2}
           numStep={0.01}
           sliderMark1={0}
-          sliderMark2={60}
+          sliderMark2={40}
+          sliderLeft={0}
+          sliderRight={40}
           min={0}
-          max={60}
+          max={40}
         />
 
         <NumInput
@@ -186,6 +201,8 @@ const InitValue = () => {
           numStep={0.01}
           sliderMark1={-45}
           sliderMark2={45}
+          sliderLeft={-45}
+          sliderRight={45}
           min={-45}
           max={45}
         />

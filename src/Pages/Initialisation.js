@@ -2,13 +2,12 @@ import {
   Container,
   Box,
   Center,
-  Grid,
   Divider,
   Text,
   Heading,
+  Flex,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import radarpic from '../Radar Gimbal Picture.jpg';
 import logo from '../Thales_Logo.svg.png';
 import InitValue from '../Components/Init/InitValue';
 import { useIntervalWhen } from 'rooks';
@@ -16,16 +15,21 @@ import axios from 'axios';
 import PastUserInputs from '../Components/Init/PastUserInputs';
 
 const Initialisation = () => {
-  const [getData, setGetData] = useState([]);
+  const [getRadars, setGetRadars] = useState([]);
   let [delay, setDelay] = useState(1000);
 
-  // GET User Inputs with Polling
+  const scanrate = 'scan_rateip';
+  const leftlimit = 'left_limitip';
+  const rightlimit = 'right_limitip';
+  const eleangle = 'eleangleip';
+
+  // GET Past 5 User Inputs with Polling
   useIntervalWhen(async () => {
     await axios
-      .get('http://192.168.4.39:5000/radar')
+      .get('http://192.168.4.39:5000/radars')
       .then(response => {
-        const items = response.data.items;
-        setGetData(items);
+        const radars = response.data.radars;
+        setGetRadars(radars);
         console.log('SUCCESS', response);
       })
       .catch(error => {
@@ -47,19 +51,10 @@ const Initialisation = () => {
         <img src={logo} alt="Thales Logo" />
       </Box>
 
-      {/* <Box p={3} w="50%" m="40px 0 15px 0">
-        <img src={radarpic} width={50} height={50} alt="Radar" />
-      </Box> */}
-
       <Divider orientation="horizontal" />
 
       <Center>
-        <Grid
-          templateColumns="repeat(2, 1fr)"
-          gap={10}
-          w="300%"
-          m="40px 0 15px 0"
-        >
+        <Flex w="100%" gap="6" direction={{ base: 'column', md: 'row' }}>
           <Box
             d="flex"
             justifyContent="right"
@@ -68,7 +63,7 @@ const Initialisation = () => {
             m="0px 0 15px 0"
             borderRadius="lg"
             borderWidth="1px"
-            boxShadow="md"
+            boxShadow="lg"
             boxSize="xl"
             bg="white"
           >
@@ -89,7 +84,7 @@ const Initialisation = () => {
             m="0px 0 15px 0"
             borderRadius="lg"
             borderWidth="1px"
-            boxShadow="md"
+            boxShadow="lg"
             boxSize="xl"
             bg="white"
           >
@@ -97,24 +92,24 @@ const Initialisation = () => {
               Past Initialisation Settings
             </Heading>
             <Text>
-              These values are the past 5 initialisation settings used.
+              These values are the past 2 initialisation settings used.
             </Text>
             <Divider orientation="horizontal" />
 
-            {getData.map(item => {
+            {getRadars.map((item, index) => {
               console.log(item);
               return (
-                <div> Past User Inputs </div>
-                // <PastUserInputs
-                //   scanrate={item.scan_rateip}
-                //   leftlimit={item.left_limitip}
-                //   rightlimit={item.right_limitip}
-                //   eleangle={item.eleangleip}
-                // />
+                <PastUserInputs
+                  number={index + 1}
+                  scanrate={item[scanrate]}
+                  leftlimit={item[leftlimit]}
+                  rightlimit={item[rightlimit]}
+                  eleangle={item[eleangle]}
+                />
               );
             })}
           </Box>
-        </Grid>
+        </Flex>
       </Center>
     </Container>
   );

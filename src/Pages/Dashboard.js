@@ -10,7 +10,7 @@ import {
   HStack,
   Flex,
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useIntervalWhen } from 'rooks';
 import axios from 'axios';
 import DashStats from '../Components/Dash/DashStats';
@@ -32,10 +32,10 @@ const Dashboard = () => {
   // useEffect(() => {
   //   const callAxios = async () => {
   //     await axios
-  //       .get('http://127.0.0.1:5000/items')
+  //       .get('http://127.0.0.1:5000/radar/1')
   //       .then(response => {
-  //         const items = response.data.items;
-  //         setGetData(items);
+  //         const radar = response.data.radar;
+  //         setGetData2(radar);
   //         console.log('SUCCESS', response);
   //       })
   //       .catch(error => {
@@ -223,7 +223,7 @@ const Dashboard = () => {
             w="40%"
             m="40px 0 15px 0"
             borderRadius="lg"
-            borderWidth="1px"
+            boxShadow="md"
           >
             <Center>
               <Heading as="h2" size="md">
@@ -234,6 +234,8 @@ const Dashboard = () => {
 
           <HStack>
             <Button
+              borderRadius="lg"
+              boxShadow="lg"
               colorScheme="blue"
               onClick={() => {
                 submitChangeSettingsHandler();
@@ -243,6 +245,8 @@ const Dashboard = () => {
             </Button>
 
             <Button
+              borderRadius="lg"
+              boxShadow="lg"
               colorScheme="red"
               onClick={() => {
                 submitStopHandler();
@@ -253,6 +257,8 @@ const Dashboard = () => {
             </Button>
 
             <Button
+              borderRadius="lg"
+              boxShadow="lg"
               colorScheme="green"
               onClick={() => {
                 submitStartHandler();
@@ -273,6 +279,7 @@ const Dashboard = () => {
               m="40px 0 15px 0"
               borderRadius="lg"
               borderWidth="1px"
+              boxShadow="lg"
             >
               <Heading as="h2" size="lg">
                 Current User Settings
@@ -300,6 +307,7 @@ const Dashboard = () => {
               m="0px 0 15px 0"
               borderRadius="lg"
               borderWidth="1px"
+              boxShadow="lg"
             >
               <Heading as="h2" size="lg">
                 Gimbal Status
@@ -339,6 +347,7 @@ const Dashboard = () => {
               m="0px 0 60px 0"
               borderRadius="lg"
               borderWidth="1px"
+              boxShadow="lg"
             >
               <Heading as="h2" size="lg">
                 System Status

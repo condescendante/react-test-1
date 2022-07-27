@@ -23,6 +23,8 @@ function NumInput({
   numStep,
   sliderMark1,
   sliderMark2,
+  sliderLeft,
+  sliderRight,
   max,
   min,
 }) {
@@ -36,11 +38,8 @@ function NumInput({
         onChange={handleChange}
         precision={numPrecision}
         step={numStep}
-        defaultValue={50}
-        min={0}
-        max={120}
-        clampValueOnBlur={false}
-        keepWithinRange={false}
+        max={max}
+        min={min}
       >
         <NumberInputField />
         <NumberInputStepper>
@@ -60,10 +59,10 @@ function NumInput({
         max={max}
         min={min}
       >
-        <SliderMark value={0} mt="1" ml="-2.5" fontSize="sm">
+        <SliderMark value={sliderLeft} mt="1" ml="-2.5" fontSize="sm">
           {sliderMark1}
         </SliderMark>
-        <SliderMark value={100} mt="1" ml="-2.5" fontSize="sm">
+        <SliderMark value={sliderRight} mt="1" ml="-2.5" fontSize="sm">
           {sliderMark2}
         </SliderMark>
         <SliderTrack>

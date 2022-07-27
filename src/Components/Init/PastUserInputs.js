@@ -7,22 +7,37 @@ import {
   Td,
   Th,
   Tbody,
+  Heading,
+  Center,
+  Divider,
 } from '@chakra-ui/react';
 import React from 'react';
 
-const PastUserInputs = ({ scanrate, leftlimit, rightlimit, eleangle }) => {
+const PastUserInputs = ({
+  number,
+  scanrate,
+  leftlimit,
+  rightlimit,
+  eleangle,
+}) => {
   return (
     <Box
       d="flex"
       justifyContent="center"
       p={3}
       bg="blue.50"
-      w="50%"
+      w="100%"
       m="20px 0 15px 0"
       borderRadius="lg"
       borderWidth="1px"
       boxShadow="md"
     >
+      <Center>
+        <Heading as="h2" size="md" m="0px 0 15px 0">
+          Setting {number}
+        </Heading>
+      </Center>
+      <Divider orientation="horizontal" />
       <TableContainer>
         <Table variant="striped" colorScheme="blue" size="sm">
           <Thead>
