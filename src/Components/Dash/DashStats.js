@@ -24,7 +24,6 @@ function DashStats(props) {
           {props.number}
           {props.unit}
         </StatNumber>
-        <StatHelpText>{props.text}</StatHelpText>
       </Stat>
     </Box>
   );

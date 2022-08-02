@@ -6,9 +6,10 @@ import {
   Text,
   Heading,
   Flex,
+  Image,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import logo from '../Thales_Logo.svg.png';
+import logo from '../spire.png';
 import InitValue from '../Components/Init/InitValue';
 import { useIntervalWhen } from 'rooks';
 import axios from 'axios';
@@ -47,8 +48,8 @@ const Initialisation = () => {
         backgroundSize: 'cover',
       }}
     >
-      <Box p={3} w="50%" m="40px 0 15px 0">
-        <img src={logo} alt="Thales Logo" />
+      <Box p={3} w="50%" m="0px 0 15px 0">
+        <Image src={logo} alt="Thales Logo" />
       </Box>
 
       <Divider orientation="horizontal" />
@@ -60,7 +61,7 @@ const Initialisation = () => {
             justifyContent="right"
             p={3}
             w="100%"
-            m="0px 0 15px 0"
+            m="10px 0 15px 0"
             borderRadius="lg"
             borderWidth="1px"
             boxShadow="lg"
@@ -81,7 +82,7 @@ const Initialisation = () => {
             justifyContent="right"
             p={3}
             w="100%"
-            m="0px 0 15px 0"
+            m="10px 0 15px 0"
             borderRadius="lg"
             borderWidth="1px"
             boxShadow="lg"

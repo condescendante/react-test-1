@@ -7,8 +7,8 @@ import { Routes, Route } from 'react-router-dom';
 const Views = () => {
   return (
     <Routes>
-      <Route index element={<LoginPage />} />
-      <Route path="/init" element={<Initialisation />} />
+      <Route index element={<Initialisation />} />
+      <Route path="/login" element={<LoginPage />} />
       <Route path="/dash" element={<Dashboard />} />
       <Route path="*" element={<div>404 Not Found</div>} />
     </Routes>

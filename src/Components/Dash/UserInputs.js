@@ -17,8 +17,8 @@ const UserInputs = ({ scanrate, leftlimit, rightlimit, eleangle }) => {
       justifyContent="center"
       p={3}
       bg="blue.50"
-      w="50%"
-      m="20px 0 15px 0"
+      w="100%"
+      m="40px 0 15px 0"
       borderRadius="lg"
       borderWidth="1px"
       boxShadow="md"

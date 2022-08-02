@@ -9,13 +9,15 @@ import {
   Center,
   HStack,
   Flex,
+  Image,
 } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
 import { useIntervalWhen } from 'rooks';
 import axios from 'axios';
 import DashStats from '../Components/Dash/DashStats';
+import DashWorking from '../Components/Dash/DashWorking';
 import UserInputs from '../Components/Dash/UserInputs';
-import logo from '../Thales_Logo.svg.png';
+import logo from '../spire.png';
 import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
@@ -179,7 +181,7 @@ const Dashboard = () => {
       });
 
       // Navigate back to init page
-      navigate('../init', { replace: true });
+      navigate('../', { replace: true });
 
       setLoading(false);
     } catch (error) {
@@ -209,8 +211,8 @@ const Dashboard = () => {
             backgroundSize: 'cover',
           }}
         >
-          <Box p={3} w="50%" m="40px 0 15px 0">
-            <img src={logo} alt="Thales Logo" />
+          <Box p={3} w="50%" m="0px 0 15px 0">
+            <Image src={logo} alt="Thales Logo" />
           </Box>
 
           <Divider orientation="horizontal" />
@@ -221,7 +223,7 @@ const Dashboard = () => {
             p={3}
             bg="blue.100"
             w="40%"
-            m="40px 0 15px 0"
+            m="0px 0 15px 0"
             borderRadius="lg"
             boxShadow="md"
           >
@@ -269,13 +271,13 @@ const Dashboard = () => {
             </Button>
           </HStack>
 
-          <Flex w="90%" direction={{ base: 'column' }}>
+          <Flex w="90%" direction={{ base: 'column' }} alignItems="center">
             <Box
               d="flex"
               justifyContent="center"
               p={3}
               bg="white"
-              w="100%"
+              w="70%"
               m="40px 0 15px 0"
               borderRadius="lg"
               borderWidth="1px"
@@ -303,36 +305,31 @@ const Dashboard = () => {
               justifyContent="center"
               p={3}
               bg="white"
-              w="100%"
+              w="70%"
               m="0px 0 15px 0"
               borderRadius="lg"
               borderWidth="1px"
               boxShadow="lg"
             >
               <Heading as="h2" size="lg">
-                Gimbal Status
+                Live Gimbal Status
               </Heading>
-              <Grid templateColumns="repeat(5,1fr)" gap={6}>
+              <Grid templateColumns="repeat(4,1fr)" gap={6}>
                 <DashStats label="Temperature" number={item.temp} unit="°C" />
                 <DashStats
                   label="Scan Rate"
                   number={item.scan_rate}
-                  unit="m/s"
+                  unit="°/s"
                 />
                 <DashStats
-                  label="Left Limit"
-                  number={item.left_limit}
-                  unit="°"
-                />
-                <DashStats
-                  label="Right Limit"
-                  number={item.right_limit}
+                  label="Centre Horizontal Angle"
+                  number={item.center_hori}
                   unit="°"
                 />
 
                 <DashStats
-                  label="Elevation Angle"
-                  number={item.eleangle}
+                  label="Centre Vertical Angle"
+                  number={item.center_verti}
                   unit="°"
                 />
               </Grid>
@@ -343,27 +340,33 @@ const Dashboard = () => {
               justifyContent="center"
               p={3}
               bg="white"
-              w="100%"
+              w="70%"
               m="0px 0 60px 0"
               borderRadius="lg"
               borderWidth="1px"
               boxShadow="lg"
             >
               <Heading as="h2" size="lg">
-                System Status
+                Live System Status
               </Heading>
               <Grid templateColumns="repeat(4,1fr)" gap={6}>
-                <DashStats label="Raspberry Pi" number={item.rpi} unit="°C" />
-                <DashStats label="ESP32" number={item.esp32} unit="°C" />
                 <DashStats
-                  label="Horizontal Motor"
-                  number={item.hori_motor}
-                  unit="°"
+                  label="Raspberry Pi Temperature"
+                  number={item.rpi}
+                  unit="°C"
                 />
                 <DashStats
-                  label="Vertical Motor"
+                  label="ESP32 Temperature"
+                  number={item.esp32}
+                  unit="°C"
+                />
+                <DashWorking
+                  label="Horizontal Motor Status"
+                  number={item.hori_motor}
+                />
+                <DashWorking
+                  label="Vertical Motor Status"
                   number={item.verti_motor}
-                  unit="°"
                 />
               </Grid>
             </Box>
