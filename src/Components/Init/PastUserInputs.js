@@ -51,7 +51,7 @@ const PastUserInputs = ({
             <Tr>
               <Td>Scan Rate</Td>
               <Td>{scanrate}</Td>
-              <Td isNumeric>metres/sec (m/s)</Td>
+              <Td isNumeric>degrees/sec (°/s)</Td>
             </Tr>
             <Tr>
               <Td>Left Limit</Td>

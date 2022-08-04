@@ -151,7 +151,7 @@ const InitValue = () => {
           identity="scan-rate"
           value={scanrate}
           handleChange={handleChangeScanRate}
-          title="Scan Rate (m/s)"
+          title="Scan Rate (°/s)"
           numPrecision={1}
           numStep={0.1}
           sliderMark1={0}
