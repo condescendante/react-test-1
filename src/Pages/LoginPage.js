@@ -12,13 +12,13 @@ import {
 import React from 'react';
 import Login from '../Components/Authentication/Login';
 import Signup from '../Components/Authentication/Signup';
-import logo from '../Thales_Logo.svg.png';
+import logo from '../spire.png';
 
 const LoginPage = () => {
   return (
     <Container maxW="xl" centerContent>
       <Box p={3} w="100%" m="40px 0 15px 0">
-        <img src={logo} alt="Thales Logo" />
+        <img src={logo} alt="Spire Logo" />
       </Box>
 
       <Box
